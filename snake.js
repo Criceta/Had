@@ -36,6 +36,10 @@ function update() {
     context.fillStyle="red";
     context.fillRect(foodX, foodY, blockSize, blockSize);
 
+    if (snakeX == foodX && snakeY == foodY) {
+        placeFood();
+    }
+
     context.fillStyle="lime";
     snakeX += velocityX * blockSize;
     snakeY += velocityY * blockSize;
