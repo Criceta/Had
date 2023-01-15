@@ -38,10 +38,10 @@ function update() {
         return;
     }
 
-    context.fillStyle="black";
+    context.fillStyle="darkolivegreen";
     context.fillRect(0, 0, board.width, board.height);
 
-    context.fillStyle="orange";
+    context.fillStyle="coral";
     context.fillRect(foodX, foodY, blockSize, blockSize);
 
     if (snakeX == foodX && snakeY == foodY) {
@@ -56,12 +56,12 @@ function update() {
         snakeBody[0] = [snakeX, snakeY];
     }
 
-    context.fillStyle="lightblue";
+    context.fillStyle="powderblue";
     snakeX += velocityX * blockSize;
     snakeY += velocityY * blockSize;
     context.fillRect(snakeX, snakeY, blockSize, blockSize);
 
-    context.fillStyle="royalblue";
+    context.fillStyle="midnightblue";
     for (let i = 0; i < snakeBody.length; i++) {
         context.fillRect(snakeBody[i][0], snakeBody[i][1], blockSize, blockSize);
     }
