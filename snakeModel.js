@@ -9,7 +9,7 @@ class Had {
         this.velocityY = 0;
 
         this.snakeBody = [];
-        this.text = "ahoj";
+        this.text = "Směr";
     }
 
     pohyb (event) {
@@ -56,13 +56,33 @@ class Had {
                 alert("Zbaštil ses!");
             }
         }
-
-        
     }
-
 }        
 
-class jidlo {
-    
+class Jidlo {
+
+    constructor(){
+        this.foodX = Math.floor(Math.random() * cols) * blockSize;
+        this.foodY = Math.floor(Math.random() * rows) * blockSize;
+    }
+
+    moveFood() {
+        this.foodX = Math.floor(Math.random() * cols) * blockSize;
+        this.foodY = Math.floor(Math.random() * rows) * blockSize;
+    }
+
+    ulovek () {
+        if (kobra.snakeX == this.foodX && kobra.snakeY == this.foodY) {
+            kobra.snakeBody.push([this.foodX, this.foodY])
+            this.moveFood();
+        }  
+        for (let i = kobra.snakeBody.length-1; i > 0; i--) {
+            kobra.snakeBody[i] = kobra.snakeBody[i-1];
+        }
+        if (kobra.snakeBody.length) {
+            kobra.snakeBody[0] = [kobra.snakeX, kobra.snakeY];
+        }  
+    }
+
 }
 
