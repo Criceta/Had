@@ -21,20 +21,19 @@ window.onload = function() {
 
     /*placeFood();*/
 
-    //document.addEventListener("keydown", kobra.up);
     document.addEventListener("keydown", kobra.pohyb);
     document.getElementById("echo").innerHTML = "Směr";
 
-    
-    
- 
     setInterval(update, 1000/9); //111.111 milliseconds
     //document.getElementById("echo").innerHTML = kobra.velocityY;
     
 }
 
 function update() {
-    
+    if (gameOver) {
+        return;
+    }
+
     context.fillStyle="darkolivegreen";
     context.fillRect(0, 0, board.width, board.height);
 
@@ -48,6 +47,12 @@ function update() {
     for (let i = 0; i < kobra.snakeBody.length; i++) {
         context.fillRect(kobra.snakeBody[i][0], kobra.snakeBody[i][1], blockSize, blockSize);
     }
+
+    kobra.konecHry();
+
+    
+
+
 
 }
 
