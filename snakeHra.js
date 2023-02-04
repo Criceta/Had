@@ -35,17 +35,6 @@ window.onload = function() {
 
 function update() {
     
-    //document.addEventListener("ArrowDown", kobra.down);
-    //document.addEventListener("ArrowLeft", kobra.left);
-    //document.addEventListener("ArrowRight", kobra.right);
-
-    //document.addEventListener("keydown", kobra.napis());
-
-    //kobra.text = "blabla";
-    
-    //document.getElementById("echo").innerHTML = kobra.snakeX;
-
-    
     context.fillStyle="darkolivegreen";
     context.fillRect(0, 0, board.width, board.height);
 
@@ -60,8 +49,6 @@ function update() {
         context.fillRect(kobra.snakeBody[i][0], kobra.snakeBody[i][1], blockSize, blockSize);
     }
 
-    //document.getElementById("pohybX").innerHTML = kobra.velocityX;
-    //document.getElementById("pohybY").innerHTML = kobra.velocityY;
 }
 
 
