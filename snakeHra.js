@@ -5,6 +5,9 @@ var board;
 var context;
 var gameOver;
 
+var velX = 0;
+var velY = 0;
+
 const kobra = new Had(25);
 
 window.onload = function() {
@@ -47,8 +50,8 @@ function update() {
     context.fillRect(0, 0, board.width, board.height);
 
     context.fillStyle="powderblue";
-    kobra.snakeX += kobra.velocityX * blockSize;
-    kobra.snakeY += kobra.velocityY * blockSize;
+    kobra.snakeX += velX * blockSize;
+    kobra.snakeY += velY * blockSize;
     context.fillRect(kobra.snakeX, kobra.snakeY, blockSize, blockSize);
     
 
@@ -56,6 +59,9 @@ function update() {
     for (let i = 0; i < kobra.snakeBody.length; i++) {
         context.fillRect(kobra.snakeBody[i][0], kobra.snakeBody[i][1], blockSize, blockSize);
     }
+
+    //document.getElementById("pohybX").innerHTML = kobra.velocityX;
+    //document.getElementById("pohybY").innerHTML = kobra.velocityY;
 }
 
 
