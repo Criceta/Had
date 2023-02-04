@@ -44,6 +44,21 @@ class Had {
 
     }
     
+    konecHry () {
+        if (this.snakeX < 0 || this.snakeX > cols*blockSize || this.snakeY < 0 || this.snakeY > rows*blockSize) {
+            gameOver = true;
+            alert("Narazil jsi hlavou do zdi.");
+        }
+    
+        for (let i = 0; i < this.snakeBody.length; i++) {
+            if (this.snakeX == this.snakeBody[i][0] && this.snakeY == this.snakeBody[i][1]){
+                gameOver = true;
+                alert("Zbaštil ses!");
+            }
+        }
+
+        
+    }
 
 }        
 
