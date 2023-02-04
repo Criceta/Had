@@ -84,7 +84,15 @@ class Had {
             this.velocityY = 0;
             this.text = "Right";
         }
+
         document.getElementById("echo").innerHTML = this.text;
+        document.getElementById("pohybX").innerHTML = this.velocityX;
+        document.getElementById("pohybY").innerHTML = this.velocityY;
+
+        velX = this.velocityX;
+        velY = this.velocityY;
+        //return this.velocityY;
+
     }
 
     
