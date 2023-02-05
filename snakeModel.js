@@ -91,7 +91,7 @@ class LokalUloz {
             if(typeof (Storage) == "undefined") {
                 alert('Nepodporovane lokalni uloziste');
             }
-            if (typeof localStorage.getItem ("highscore") == "undefined") {
+            if (typeof (localStorage.getItem ("highscore")) !== Number) {
                 localStorage.setItem ("highscore", 0);
             }
 
