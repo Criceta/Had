@@ -23,7 +23,7 @@ window.onload = function() {
     lokalniUloziste.highskoreHodnota = localStorage.getItem("highscore");
     document.getElementById("HighScore").innerHTML =  lokalniUloziste.highskoreHodnota;
     localStorage.setItem("score", kobra.snakeBody.length);
-    document.getElementById("Score").innerHTML = 0;
+    document.getElementById("Score").innerHTML = kobra.snakeBody.length;
 
     document.addEventListener("keydown", kobra.pohyb);
 
