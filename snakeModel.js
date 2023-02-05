@@ -87,11 +87,8 @@ class Jidlo {
 
 class LokalUloz {
 
-    muzuUlozit = true;
-
         constructor() {
             if(typeof (Storage) == "undefined") {
-                this.muzuUlozit = false;
                 alert('Nepodporovane lokalni uloziste');
             }
             if (typeof localStorage.getItem ("highscore") == "undefined") {
@@ -112,8 +109,6 @@ class LokalUloz {
         }
 
         HighSkore () {
-            document.getElementById("echo").innerHTML = lokalniUloziste.skoreHodnota;
-            document.getElementById("echo2").innerHTML = lokalniUloziste.highskoreHodnota;
             if (this.skoreHodnota > this.highskoreHodnota) {
                 localStorage.setItem("highscore", this.skoreHodnota);
             }
