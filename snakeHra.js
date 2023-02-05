@@ -8,8 +8,12 @@ var gameOver;
 var velX = 0;
 var velY = 0;
 
+var nactiHighScore;
+
 const kobra = new Had(25);
 const hlodavec = new Jidlo();
+const lokalniUloziste = new LokalUloz();
+
 
 window.onload = function() {
     board = document.getElementById("board");
@@ -18,11 +22,17 @@ window.onload = function() {
     context = board.getContext("2d");
 
     
+    lokalniUloziste.highskoreHodnota = localStorage.getItem("highscore");
+    document.getElementById("HighScore").innerHTML =  lokalniUloziste.highskoreHodnota;
+    //document.getElementById("Score").innerHTML = lokalniUloziste.vrat("score");
+    localStorage.setItem("score", kobra.snakeBody.length);
+    document.getElementById("Score").innerHTML = 0;
+    
     //document.getElementById("echo").innerHTML = kobra.snakeX;
 
 
     document.addEventListener("keydown", kobra.pohyb);
-    document.getElementById("echo").innerHTML = kobra.text;
+    //document.getElementById("echo").innerHTML = kobra.text;
 
     setInterval(update, 1000/9); //111.111 milliseconds
     //document.getElementById("echo").innerHTML = kobra.velocityY;
@@ -31,11 +41,13 @@ window.onload = function() {
 
 function update() {
     if (gameOver) {
+        lokalniUloziste.HighSkore();
         return;
     }
 
     context.fillStyle="darkolivegreen";
     context.fillRect(0, 0, board.width, board.height);
+
 
     context.fillStyle="coral";
     context.fillRect(hlodavec.foodX, hlodavec.foodY, blockSize, blockSize);
@@ -57,6 +69,11 @@ function update() {
 
     kobra.konecHry();
 
+    //lokalniUloziste.skore ("159");
+    
+    //lokalniUloziste.score (kobra.snakeBody.length);
+    document.getElementById("Score").innerHTML = lokalniUloziste.vrat("score");
+    //document.getElementById("echo").innerHTML = lokalniUloziste.skoreHodnota;
 }
 
 
