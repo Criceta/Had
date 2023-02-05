@@ -1,5 +1,4 @@
 class Had {
-    //snake head
 
     constructor(blockSize){
         this.snakeX = blockSize * 5;
@@ -35,11 +34,6 @@ class Had {
             this.text = "Right";
         }
 
-        //document.getElementById("echo").innerHTML = this.text;
-
-        //document.getElementById("pohybX").innerHTML = this.velocityX;
-        //document.getElementById("pohybY").innerHTML = this.velocityY;
-
         velX = this.velocityX;
         velY = this.velocityY;
 
@@ -48,16 +42,12 @@ class Had {
     konecHry () {
         if (this.snakeX < 0 || this.snakeX > cols*blockSize || this.snakeY < 0 || this.snakeY > rows*blockSize) {
             gameOver = true;
-
-
             alert("Narazil jsi hlavou do zdi.");
         }
     
         for (let i = 0; i < this.snakeBody.length; i++) {
             if (this.snakeX == this.snakeBody[i][0] && this.snakeY == this.snakeBody[i][1]){
                 gameOver = true;
-              
-
                 alert("Zbaštil ses!");
             }
         }
@@ -111,7 +101,6 @@ class LokalUloz {
 
         uloz (klic, hodnota) {
             localStorage.setItem(klic, hodnota);
-            //this.skore = this.localStorage.setItem(klic, hodnota);
             this.skoreHodnota = hodnota;
         }
 
