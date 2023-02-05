@@ -94,6 +94,9 @@ class LokalUloz {
                 this.muzuUlozit = false;
                 alert('Nepodporovane lokalni uloziste');
             }
+            if (typeof localStorage.getItem ("highscore") == "undefined") {
+                localStorage.setItem ("highscore", 0);
+            }
 
             this.skoreHodnota  = 0;
             this.highskoreHodnota = 0;
