@@ -35,7 +35,8 @@ class Had {
             this.text = "Right";
         }
 
-        document.getElementById("echo").innerHTML = this.text;
+        //document.getElementById("echo").innerHTML = this.text;
+
         //document.getElementById("pohybX").innerHTML = this.velocityX;
         //document.getElementById("pohybY").innerHTML = this.velocityY;
 
@@ -47,12 +48,16 @@ class Had {
     konecHry () {
         if (this.snakeX < 0 || this.snakeX > cols*blockSize || this.snakeY < 0 || this.snakeY > rows*blockSize) {
             gameOver = true;
+
+
             alert("Narazil jsi hlavou do zdi.");
         }
     
         for (let i = 0; i < this.snakeBody.length; i++) {
             if (this.snakeX == this.snakeBody[i][0] && this.snakeY == this.snakeBody[i][1]){
                 gameOver = true;
+              
+
                 alert("Zbaštil ses!");
             }
         }
@@ -75,6 +80,10 @@ class Jidlo {
         if (kobra.snakeX == this.foodX && kobra.snakeY == this.foodY) {
             kobra.snakeBody.push([this.foodX, this.foodY])
             this.moveFood();
+
+
+            lokalniUloziste.uloz("score", lokalniUloziste.skoreHodnota+1);
+
         }  
         for (let i = kobra.snakeBody.length-1; i > 0; i--) {
             kobra.snakeBody[i] = kobra.snakeBody[i-1];
@@ -86,3 +95,36 @@ class Jidlo {
 
 }
 
+class LokalUloz {
+
+    muzuUlozit = true;
+
+        constructor() {
+            if(typeof (Storage) == "undefined") {
+                this.muzuUlozit = false;
+                alert('Nepodporovane lokalni uloziste');
+            }
+
+            this.skoreHodnota  = 0;
+            this.highskoreHodnota = 0;
+        }
+
+        uloz (klic, hodnota) {
+            localStorage.setItem(klic, hodnota);
+            //this.skore = this.localStorage.setItem(klic, hodnota);
+            this.skoreHodnota = hodnota;
+        }
+
+        vrat (klic) {
+            return localStorage.getItem(klic);
+        }
+
+        HighSkore () {
+            document.getElementById("echo").innerHTML = lokalniUloziste.skoreHodnota;
+            document.getElementById("echo2").innerHTML = lokalniUloziste.highskoreHodnota;
+            if (this.skoreHodnota > this.highskoreHodnota) {
+                localStorage.setItem("highscore", this.skoreHodnota);
+            }
+        }
+
+}
